@@ -5,7 +5,7 @@
 	 「 TqTo 」
 	@ My God
 	@ My Parents
-        @ KokoRey
+        @ FahmiBotz
 	@ Fatih A.
 	@ Ferdi
 	@ DikaArdnt [author]
@@ -805,16 +805,16 @@ if (!m.isGroup) return reply(lang.groupOnly())
             case 'ping': case 'tes': case 'runtime':
             reply(`Runtime : ${runtime(process.uptime())}`)
             break
-            case 'umum': {
+            case 'public': {
                 if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
                 alpha.public = true
-                reply('Sukses Ganti Ke Mode Umum')
+                reply('Sukses Ganti Ke Mode Public')
             }
             break
-            case 'pribadi': {
+            case 'self': {
                 if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
                 alpha.public = false
-                reply('Sukses Ganti Ke Mode Pribadi\n\nUntuk mengubah ke mode public silahkan gunakan nomor bot')
+                reply('Sukses Ganti Ke Mode Self\n\nUntuk mengubah ke mode public silahkan gunakan nomor bot')
             }
             break
             case 'owner': case 'creator': {
@@ -1211,22 +1211,22 @@ break
                 await alpha.groupAcceptInvite(result).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
             }
             break
-            case 't': case 'infoall':
+            case 'tagall': case 'infoall':
                 if (!m.isGroup) return reply(lang.groupOnly())
                 if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
-                let tekss = `══✪〘 *👥 By KoKoRey* 〙✪══\n\n➲ *Message : ${q ? q : 'Nothing'}*\n\n`
+                let tekss = `══✪〘 *👥 By FahmiBotz* 〙✪══\n\n➲ *Message : ${q ? q : 'Nothing'}*\n\n`
 		      	for (let mem of participants) {
-		            tekss += `🏅 @${mem.id.split('@')[0]}\n`
+		            tekss += `⭔ @${mem.id.split('@')[0]}\n`
 				}
                 tekss += `\n⋙ *${botname}* ⋘`
                 alpha.sendMessage(from, { text: tekss, mentions: participants.map(a => a.id) }, { quoted: fkontak })
             break
-            case 'h':
+            case 'hidetag':
                 if (!m.isGroup) return reply(lang.groupOnly())
                 if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
                 alpha.sendMessage(from, { text : q ? q : '' , mentions: participants.map(a => a.id)}, {quoted: fkontak})
             break
-            case 'tendang': {
+            case 'kick': {
 				if (!m.isGroup) return reply(lang.groupOnly())
                 if (!isBotAdmins) return reply(lang.botNotAdmin())
                 if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
@@ -1235,7 +1235,7 @@ break
 				await alpha.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 				}
 				break
-			case 'tambah': {
+			case 'add': {
 				if (!m.isGroup) return reply(lang.groupOnly())
                 if (!isBotAdmins) return reply(lang.botNotAdmin())
                 if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
@@ -1244,7 +1244,7 @@ break
 				await alpha.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 				}
 				break
-			case 'admin': {
+			case 'promote': {
 				if (!m.isGroup) return reply(lang.groupOnly())
                 if (!isBotAdmins) return reply(lang.botNotAdmin())
                 if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())	
@@ -1253,7 +1253,7 @@ break
 				await alpha.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 				}
 				break
-			case 'babu': {
+			case 'demote': {
 				if (!m.isGroup) return reply(lang.groupOnly())
                 if (!isBotAdmins) return reply(lang.botNotAdmin())
                 if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
@@ -1262,7 +1262,7 @@ break
 				await alpha.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 				}
 				break
-			case 'revoke':
+			case 'resetlink':
                 if (!m.isGroup) return reply(lang.groupOnly())
                 if (!isBotAdmins) return reply(lang.botNotAdmin())
                 if (!(isGroupAdmins || isGroupOwner )) return reply(lang.adminOnly())
